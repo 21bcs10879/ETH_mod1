@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.13;
+
+contract VotingEligibility {
+    uint public minVotingAge = 18;
+
+    function assertCheckAge(uint age) public view {
+       
+        assert(age >= minVotingAge);
+    }
+
+    function requireValidationForVoting(uint age) public pure {
+       
+        require(age >= 18, "You're less than 18");
+    }
+
+    function revertIfUnderage(uint age) public pure {
+      
+
+        if (age < 18) {
+            revert("Underage: You're under 18");
+        }
+    }
+}
